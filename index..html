@@ -1,0 +1,188 @@
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def home():
+    # html start
+    return """ 
+<html>
+<head>
+
+<!-- ===================== -->
+<!-- PAGE STYLE -->
+<!-- ===================== -->
+
+<style>
+
+body{
+background-color:#fff0f5;
+text-align:center;
+font-family:sans-serif;
+overflow:hidden;
+}
+
+/* ===================== */
+/* BIG HEART */
+/* ===================== */
+
+.heart{
+position:relative;
+width:220px;
+height:220px;
+background:#ff4d6d;
+transform:rotate(-45deg);
+margin:80px auto;
+cursor:pointer;
+}
+
+.heart:before,
+.heart:after{
+content:"";
+position:absolute;
+width:220px;
+height:220px;
+background:#ff4d6d;
+border-radius:50%;
+}
+
+.heart:before{
+top:-110px;
+left:0;
+}
+
+.heart:after{
+left:110px;
+top:0;
+}
+
+/* ===================== */
+/* amounti */
+/* ===================== */
+
+.name{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%) rotate(45deg);
+color:white;
+font-size:26px;
+font-weight:bold;
+}
+
+/* ===================== */
+/* FLOATING HEARTS */
+/* ===================== */
+
+.floating-heart{
+position:fixed;
+bottom:-20px;
+font-size:20px;
+color:#ff4d6d;
+animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+0%{transform:translateY(0);opacity:1;}
+100%{transform:translateY(-900px);opacity:0;}
+}
+
+/* ===================== */
+/* BUTTON STYLE */
+/* ===================== */
+
+button{
+padding:10px 22px;
+font-size:16px;
+border:none;
+background:#d81b60;
+color:white;
+border-radius:10px;
+cursor:pointer;
+margin-top:25px;
+}
+
+/* ===================== */
+/* BIG LOVE MESSAGE */
+/* ===================== */
+
+#loveMessage{
+display:none;
+font-size:45px;
+color:#d81b60;
+margin-top:40px;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ===================== -->
+<!-- TITLE -->
+<!-- ===================== -->
+
+<h1 style="color:#d81b60;">To My Favorite Person</h1>
+
+<p style="font-size:18px;color:#555;">
+I am learning how to build things with code... <br>
+and the very first thing I wanted to build was a message for you.
+</p>
+
+<!-- ===================== -->
+<!-- BIG HEART -->
+<!-- ===================== -->
+
+<div class="heart" id="heart">
+<div class="name">Amina ❤️</div>
+</div>
+
+<!-- ===================== -->
+<!-- BUTTON -->
+<!-- ===================== -->
+
+<button onclick="openHeart()">Click Me</button>
+
+<!-- ===================== -->
+<!-- BIG MESSAGE -->
+<!-- ===================== -->
+
+<div id="loveMessage">
+I LOVE YOU BABE ❤️
+</div>
+
+<!-- ===================== -->
+<!-- FLOATING HEARTS -->
+<!-- ===================== -->
+
+<div class="floating-heart" style="left:10%">❤️</div>
+<div class="floating-heart" style="left:30%;animation-delay:1s">❤️</div>
+<div class="floating-heart" style="left:50%;animation-delay:2s">❤️</div>
+<div class="floating-heart" style="left:70%;animation-delay:3s">❤️</div>
+<div class="floating-heart" style="left:90%;animation-delay:4s">❤️</div>
+
+<!-- ===================== -->
+<!-- SCRIPT -->
+<!-- ===================== -->
+
+<script>
+
+function openHeart(){
+
+document.getElementById("heart").style.display="none";
+
+document.getElementById("loveMessage").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
+    """
+
+
+app.run(debug=True)
